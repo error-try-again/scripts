@@ -1,0 +1,1 @@
+1 2 * * 0 /bin/bash ~/Scripts/cron-scripts/weekly-ssh-report.sh >> ~/ssh-report.txt
