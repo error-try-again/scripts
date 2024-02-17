@@ -23,10 +23,10 @@ ssh_key_path="~/.ssh/virt_hosts_ssh.pub"
 for vm in "${vms[@]}"
 do
   if VBoxManage showvminfo "$vm" | grep "running (since" >/dev/null 2>&1; then
-    echo "$vm is already running"
+    echo "${vm} is already running"
   else
-    VBoxHeadless --startvm "$vm" &
-    echo "Starting $vm"
+    VBoxHeadless --startvm "${vm}" &
+    echo "Starting ${vm}"
   fi
 done
 
@@ -46,8 +46,8 @@ do
   tmux resize-pane -y 5
 
   # SSH into the current host in the new pane
-  tmux send-keys "ssh -i $ssh_key_path -p ${host#*:} ${host%:*}" C-m
-  
+  tmux send-keys "ssh -i ${ssh_key_path} -p ${host#*:} ${host%:*}" C-m
+
 done
 
 # Attach to the tmux session
